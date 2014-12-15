@@ -6,12 +6,17 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 
 /**
  * Created by matthewdarke on 12/14/14.
  */
+
+
+
 public class MainFragment extends ListFragment {
+    Button bnImpli;
 
     View v;
 
@@ -27,7 +32,7 @@ public class MainFragment extends ListFragment {
 
 
         v = inflater.inflate(R.layout.main_fragment, container, false);
-
+        bnImpli = (Button) v.findViewById(R.id.b3);
 
         return v;
 
@@ -44,7 +49,19 @@ public class MainFragment extends ListFragment {
         if (getActivity() != null) {
             ((MainActivity)getActivity()).loadCacheData();
         }
+        bnImpli.setOnClickListener(new View.OnClickListener() {
 
+
+            @Override
+            public void onClick(View v) {
+                // TDOD Auto-generated method stub
+
+                Intent implicit = new Intent(Intent.ACTION_SEND);
+                implicit.setType("text/plain");
+                startActivity(implicit);
+
+            }
+        });
 
     }
 
@@ -68,11 +85,11 @@ public class MainFragment extends ListFragment {
         bundle.putString("mRate", carData.getmRate());
         bundle.putString("mModel", carData.getmModel());
 
-        Intent intent = new Intent(v.getContext(),SecondActivity.class);
-        intent.putExtra("carData", ((MainActivity)getActivity()).carsArray);
-        intent.putExtras(bundle);
+        Intent pdIntent = new Intent(v.getContext(),SecondActivity.class);
+        pdIntent.putExtra("carsArray", ((MainActivity)getActivity()).carsArray);
+        pdIntent.putExtras(bundle);
 
-        startActivity(intent);
+        startActivity(pdIntent);
 
 
     }

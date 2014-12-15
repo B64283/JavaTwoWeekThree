@@ -11,6 +11,8 @@ import android.view.MenuItem;
 
 public class SecondActivity extends Activity {
 
+    //public boolean carsArray;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
 

@@ -59,7 +59,6 @@ public class SecondFragment extends Fragment {
         mCarRate = (TextView) v.findViewById(R.id.textView_rate);
 
 
-
         Intent intent = getActivity().getIntent();
 
         mCarsArrayList = (ArrayList<Cars>) intent.getSerializableExtra("carsArray");
@@ -99,7 +98,7 @@ public class SecondFragment extends Fragment {
         bnDelete.setOnClickListener(new View.OnClickListener() {
 
 
-            public int contentView;
+
 
             @Override
             public void onClick(View v) {
@@ -111,10 +110,14 @@ public class SecondFragment extends Fragment {
                 getActivity().
                         finish();
 
-
             }
+        });
 
-            private void updateCache() {
+        return v;
+
+    }
+
+    private void updateCache() {
                 try{
 
 
@@ -138,27 +141,11 @@ public class SecondFragment extends Fragment {
 
 
             }
-        });
 
-        return v;
+
+
     }
 
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.second_fragment);
-
-        ActionBar actionBar = getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-    }
 
 
-    public ActionBar getActionBar() {
-        return actionBar;
-    }
-
-    public void setContentView(int contentView) {
-        this.contentView = contentView;
-    }
-}
