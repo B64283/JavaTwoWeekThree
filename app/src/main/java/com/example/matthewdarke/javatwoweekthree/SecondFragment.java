@@ -1,6 +1,5 @@
 package com.example.matthewdarke.javatwoweekthree;
 
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
@@ -24,15 +23,15 @@ import java.util.ArrayList;
 
 public class SecondFragment extends Fragment {
 
-    ArrayList<Cars> mCarsArrayList = new ArrayList<Cars>();
-    private String mCar;
+    public ArrayList<Cars> mCarsArrayList = new ArrayList<Cars>();
+    public String mCar;
     private TextView mCarMake;
     private TextView mCarModel;
     private TextView mCarRate;
     Button bnImpli;
     Button bnDelete;
-    ActionBar actionBar;
-    private int contentView;
+    //ActionBar actionBar;
+    //private int contentView;
 
 
 
@@ -48,19 +47,21 @@ public class SecondFragment extends Fragment {
                              Bundle savedInstanceState) {
 
 
-        View v;
-        v = inflater.inflate(R.layout.second_fragment, container, false);
+        View view;
+        view = inflater.inflate(R.layout.second_fragment, container, false);
 
-        bnImpli = (Button) v.findViewById(R.id.b3);
-        bnDelete = (Button) v.findViewById(R.id.bnDelete);
+        bnImpli = (Button) view.findViewById(R.id.b3);
+        bnDelete = (Button) view.findViewById(R.id.bnDelete);
 
-        mCarMake = (TextView) v.findViewById(R.id.textView_Make);
-        mCarModel = (TextView) v.findViewById(R.id.textView_model);
-        mCarRate = (TextView) v.findViewById(R.id.textView_rate);
+        mCarMake = (TextView) view.findViewById(R.id.textView_Make);
+        mCarModel = (TextView) view.findViewById(R.id.textView_model);
+        mCarRate = (TextView) view.findViewById(R.id.textView_rate);
+
 
 
         Intent intent = getActivity().getIntent();
 
+        //noinspection unchecked
         mCarsArrayList = (ArrayList<Cars>) intent.getSerializableExtra("carsArray");
 
         Bundle data = intent.getExtras();
@@ -68,10 +69,14 @@ public class SecondFragment extends Fragment {
 
         if (data != null) {
 ///get key value
-            mCar = data.get("cMake").toString();
-            String firstMake = data.getString("cMake");
-            String firstModel = data.get("cModel").toString();
-            String firstRate = data.get("cRate").toString();
+
+            //String firstMake = data.getString("mMake");
+
+            String firstMake = data.getString("mMake");
+            mCar = data.get("mMake").toString();
+
+            String firstModel = data.getString("mModel");
+            String firstRate = data.getString("mRate");
 
             mCarMake.setText(firstMake);
             mCarModel.setText(firstModel);
@@ -85,7 +90,7 @@ public class SecondFragment extends Fragment {
 
 
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 // TDOD Auto-generated method stub
 
                 Intent implicit = new Intent(Intent.ACTION_SEND);
@@ -101,7 +106,7 @@ public class SecondFragment extends Fragment {
 
 
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 int deleteIndex = MainActivity.deleteIndex;
                 MainActivity.carsArray.remove(deleteIndex);
                 MainActivity.adapter.notifyDataSetChanged();
@@ -113,7 +118,7 @@ public class SecondFragment extends Fragment {
             }
         });
 
-        return v;
+        return view;
 
     }
 
@@ -121,7 +126,7 @@ public class SecondFragment extends Fragment {
                 try{
 
 
-                    FileOutputStream outputStream = getActivity().openFileOutput("carData", Context.MODE_PRIVATE);
+                    @SuppressWarnings("ConstantConditions") FileOutputStream outputStream = getActivity().openFileOutput("carData", Context.MODE_PRIVATE);
 
                     ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
 

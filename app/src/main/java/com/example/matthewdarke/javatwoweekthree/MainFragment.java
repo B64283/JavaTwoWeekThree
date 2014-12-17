@@ -72,20 +72,21 @@ public class MainFragment extends ListFragment {
 
 
     @Override
-    public void onListItemClick(ListView l, View v, int position, long id) {
-        super.onListItemClick(l, v, position, id);
+    public void onListItemClick(ListView l, View view, int position, long id) {
+        super.onListItemClick(l, view, position, id);
 
         MainActivity.deleteIndex = position;
 
 
-        Cars carData = (Cars) l.getItemAtPosition(position);
+        Cars cars = (Cars) l.getItemAtPosition(position);
 
         Bundle bundle = new Bundle();
-        bundle.putString("mMake", carData.getmMake());
-        bundle.putString("mRate", carData.getmRate());
-        bundle.putString("mModel", carData.getmModel());
+        bundle.putString("mMake", cars.getmMake());
+        bundle.putString("mRate", cars.getmRate());
+        bundle.putString("mModel", cars.getmModel());
 
-        Intent pdIntent = new Intent(v.getContext(),SecondActivity.class);
+        Intent pdIntent = new Intent(view.getContext(),SecondActivity.class);
+
         pdIntent.putExtra("carsArray", ((MainActivity)getActivity()).carsArray);
         pdIntent.putExtras(bundle);
 

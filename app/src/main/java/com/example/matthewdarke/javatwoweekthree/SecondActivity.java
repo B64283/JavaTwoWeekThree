@@ -11,6 +11,8 @@ import android.view.MenuItem;
 
 public class SecondActivity extends Activity {
 
+    //public static ArrayList<Cars> carsArray = new ArrayList<Cars>();
+
     //public boolean carsArray;
 
     @Override
@@ -28,16 +30,14 @@ public class SecondActivity extends Activity {
             SecondFragment secondFrag = new SecondFragment();
 
             getFragmentManager()
-                    .beginTransaction()
-
-
-                    .add(R.id.second_activity_id, secondFrag)
+                    .beginTransaction().add(R.id.second_activity_id, secondFrag)
                     .commit();
 
 
         }
 
 //creates/Nav bar
+        //noinspection ConstantConditions
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
     }

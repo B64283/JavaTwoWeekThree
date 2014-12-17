@@ -4,5 +4,6 @@
     <string name="app_name">JavaTwoWeekThree</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="Add_car_title">Add A Car</string>
 
 </resources>

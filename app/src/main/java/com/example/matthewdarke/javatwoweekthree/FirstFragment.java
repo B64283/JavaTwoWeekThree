@@ -66,6 +66,7 @@ public class FirstFragment extends Fragment {
                 Intent intent = new Intent();
                 intent.putExtra("carData", mCars);
 
+                //noinspection ConstantConditions
                 getActivity().setResult(Activity.RESULT_OK, intent);
                 getActivity().finish();
 

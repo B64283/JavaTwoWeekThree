@@ -49,6 +49,7 @@ public class MainActivity extends Activity {
     }
 
 
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -59,7 +60,7 @@ public class MainActivity extends Activity {
 
         if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
 
-            ArrayList<Cars> first = (ArrayList<Cars>) data.getSerializableExtra("carData");
+           ArrayList<Cars> first = (ArrayList<Cars>) data.getSerializableExtra("carData");
 
             if (carsArray != null) {
                 cacheCarData();
@@ -90,10 +91,12 @@ public class MainActivity extends Activity {
 
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
 
+            //add car data items to array
             for (Cars aCarsArray : carsArray) {
 
                 mCarData = aCarsArray;
 
+               //write car object
                 objectOutputStream.writeObject(mCarData);
             }
 
@@ -110,7 +113,7 @@ public class MainActivity extends Activity {
     public void loadCacheData() {
 
         MainFragment mainFragment = (MainFragment)
-                getFragmentManager().findFragmentById(R.id.main_fragment_id);
+                getFragmentManager().findFragmentById(R.id.main_activity_id);
 
 
         try{
@@ -124,6 +127,7 @@ public class MainActivity extends Activity {
 
                 //cast Cars data
                 mCarData = (Cars) objectInputStream.readObject();
+
                 carsArray.add(mCarData);
                 //close input stream
             }
@@ -131,7 +135,7 @@ public class MainActivity extends Activity {
             //close input stream
 
             objectInputStream.close();
-
+//add objects to array adapter
             adapter = new ArrayAdapter<Cars>(this, android.R.layout.simple_list_item_1, carsArray);
 
             mainFragment.setListAdapter(adapter);

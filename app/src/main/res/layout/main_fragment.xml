@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/holo_blue_bright"
-                android:id="@+id/main_fragment_id">
+                android:id="@+id/main_fragment_id"
+                tools:ignore="Overdraw">
 
     <TextView
         android:layout_width="290dp"
         android:layout_height="70dp"
-        android:text="           Click Settings to Add a Car"
+        android:text="   Click Settings to Add Car"
         android:id="@+id/txt"
         android:textSize="08pt"
         android:textAlignment="inherit"
         android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/b3"
+        android:layout_toStartOf="@+id/b3"/>
 
     <ListView
         android:layout_width="wrap_content"
